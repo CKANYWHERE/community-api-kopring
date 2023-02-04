@@ -1,11 +1,13 @@
 package ckanywhere.communityapi.api.post
 
 import ckanywhere.communityapi.api.post.dto.CreatePostDto
+import ckanywhere.communityapi.api.post.dto.UpdatePostDto
 import ckanywhere.communityapi.api.post.entity.PostEntity
 import org.springframework.web.bind.annotation.DeleteMapping
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.PostMapping
+import org.springframework.web.bind.annotation.PutMapping
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
@@ -27,5 +29,11 @@ class PostController(val postService: PostService) {
     @DeleteMapping("/{id}")
     fun deletePost(@PathVariable id: Long): PostEntity? {
         return this.postService.deletePost(id)
+    }
+
+    @PutMapping("/{id}")
+    fun updatePost(@PathVariable id: Long,
+                   @RequestBody dto: UpdatePostDto): PostEntity? {
+        return this.postService.updatePost(id, dto)
     }
 }

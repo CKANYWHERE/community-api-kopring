@@ -1,6 +1,7 @@
 package ckanywhere.communityapi.api.post
 
 import ckanywhere.communityapi.api.post.dto.CreatePostDto
+import ckanywhere.communityapi.api.post.dto.UpdatePostDto
 import ckanywhere.communityapi.api.post.entity.PostEntity
 import ckanywhere.communityapi.api.post.repository.PostRepo
 import org.springframework.stereotype.Service
@@ -20,6 +21,12 @@ class PostService(val postRepo: PostRepo) {
     @Transactional
     fun deletePost(id: Long): PostEntity? {
         return this.postRepo.deletePostByIdAndSelect(id)
+    }
+
+    @Transactional
+    fun updatePost(id: Long, dto: UpdatePostDto): PostEntity? {
+        this.postRepo.updatePost(id, dto)
+        return this.postRepo.getPost(id)
     }
 
 }

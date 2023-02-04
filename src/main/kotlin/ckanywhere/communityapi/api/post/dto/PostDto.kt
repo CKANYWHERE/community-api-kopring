@@ -13,3 +13,8 @@ data class CreatePostDto(
         )
     }
 }
+
+data class UpdatePostDto(
+    val content: String,
+    val title: String
+)
