@@ -11,19 +11,22 @@ class PostRepoImpl(val jpaQueryFactory: JPAQueryFactory): PostCustom {
     override fun getPosts(): List<PostEntity> {
         return jpaQueryFactory
             .select(QPostEntity.postEntity)
-            .from(QPostEntity.postEntity).fetch();
+            .from(QPostEntity.postEntity)
+            .fetch()
     }
 
     override fun deletePostByIdAndSelect(id: Long): PostEntity? {
+        val post =  jpaQueryFactory
+            .select(QPostEntity.postEntity)
+            .from(QPostEntity.postEntity)
+            .where(QPostEntity.postEntity.id.eq(id))
+            .fetchOne()
+
         jpaQueryFactory
             .delete(QPostEntity.postEntity)
             .where(QPostEntity.postEntity.id.eq(id))
             .execute()
 
-        return jpaQueryFactory
-            .select(QPostEntity.postEntity)
-            .from(QPostEntity.postEntity)
-            .where(QPostEntity.postEntity.id.eq(id))
-            .fetchOne()
+        return post
     }
 }

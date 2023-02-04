@@ -4,6 +4,7 @@ import ckanywhere.communityapi.api.post.dto.CreatePostDto
 import ckanywhere.communityapi.api.post.entity.PostEntity
 import ckanywhere.communityapi.api.post.repository.PostRepo
 import org.springframework.stereotype.Service
+import org.springframework.transaction.annotation.Transactional
 
 @Service
 class PostService(val postRepo: PostRepo) {
@@ -16,6 +17,7 @@ class PostService(val postRepo: PostRepo) {
         return this.postRepo.save(dto.toEntity())
     }
 
+    @Transactional
     fun deletePost(id: Long): PostEntity? {
         return this.postRepo.deletePostByIdAndSelect(id)
     }
