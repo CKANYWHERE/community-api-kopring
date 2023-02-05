@@ -6,7 +6,7 @@ data class CreatePostDto(
     val content: String,
     val title: String
 ){
-    fun toEntity(): PostEntity {
+    fun toEntity(): PostEntity{
         return PostEntity(
             content = content,
             title = title

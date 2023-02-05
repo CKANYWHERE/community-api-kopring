@@ -33,6 +33,7 @@ dependencies {
     implementation("org.mybatis.spring.boot:mybatis-spring-boot-starter:2.2.2")
     implementation("com.querydsl:querydsl-jpa")
     implementation("org.springframework.boot:spring-boot-starter-validation")
+    implementation("org.modelmapper:modelmapper:2.4.4")
     kapt(group = "com.querydsl", name = "querydsl-apt", classifier = "jpa")
     compileOnly("org.projectlombok:lombok")
     runtimeOnly("mysql:mysql-connector-java")

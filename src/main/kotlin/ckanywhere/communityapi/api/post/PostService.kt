@@ -4,11 +4,15 @@ import ckanywhere.communityapi.api.post.dto.CreatePostDto
 import ckanywhere.communityapi.api.post.dto.UpdatePostDto
 import ckanywhere.communityapi.api.post.entity.PostEntity
 import ckanywhere.communityapi.api.post.repository.PostRepo
+import ckanywhere.communityapi.config.ModelMapperConfig
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
 
 @Service
-class PostService(val postRepo: PostRepo) {
+class PostService(
+    val postRepo: PostRepo,
+    val modelMapper: ModelMapperConfig
+    ) {
 
     fun getPosts(): List<PostEntity> {
         return this.postRepo.getPosts()
