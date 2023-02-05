@@ -26,4 +26,14 @@ class PostEntity(
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "comments")
     var comment: MutableList<CommentEntity> = mutableListOf()
     ) {
+
+    fun toResponseDto(): PostResponse {
+        return PostResponse(
+            id = id,
+            title = title,
+            content = content,
+            createdAt = createdAt
+        )
+    }
+
 }
