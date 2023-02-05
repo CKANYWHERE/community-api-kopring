@@ -1,5 +1,6 @@
 package ckanywhere.communityapi.api.comment.entity
 
+import ckanywhere.communityapi.api.comment.response.CommentResponse
 import ckanywhere.communityapi.api.post.entity.PostEntity
 import java.time.OffsetDateTime
 import javax.persistence.*
@@ -24,7 +25,15 @@ class CommentEntity(
         foreignKey = ForeignKey(name = "fk_post_id"),
         nullable = true
     )
-    var comments: PostEntity? = null
+    var comment: PostEntity? = null
 ) {
+
+    fun toResponse(): CommentResponse {
+        return CommentResponse(
+            id = id,
+            content = content,
+            createdAt = createdAt
+        )
+    }
 
 }

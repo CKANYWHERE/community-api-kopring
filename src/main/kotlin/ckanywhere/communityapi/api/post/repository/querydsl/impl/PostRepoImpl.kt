@@ -1,5 +1,6 @@
 package ckanywhere.communityapi.api.post.repository.querydsl.impl
 
+import ckanywhere.communityapi.api.comment.entity.QCommentEntity
 import ckanywhere.communityapi.api.post.dto.UpdatePostDto
 import ckanywhere.communityapi.api.post.entity.PostEntity
 import ckanywhere.communityapi.api.post.entity.QPostEntity
@@ -13,6 +14,8 @@ class PostRepoImpl(val jpaQueryFactory: JPAQueryFactory): PostCustom {
         return jpaQueryFactory
             .select(QPostEntity.postEntity)
             .from(QPostEntity.postEntity)
+            .leftJoin(QPostEntity.postEntity.comments, QCommentEntity.commentEntity)
+            .fetchJoin()
             .fetch()
     }
 
@@ -25,7 +28,7 @@ class PostRepoImpl(val jpaQueryFactory: JPAQueryFactory): PostCustom {
     }
 
     override fun deletePostByIdAndSelect(id: Long): PostEntity? {
-        val post =  jpaQueryFactory
+        val post = jpaQueryFactory
             .select(QPostEntity.postEntity)
             .from(QPostEntity.postEntity)
             .where(QPostEntity.postEntity.id.eq(id))

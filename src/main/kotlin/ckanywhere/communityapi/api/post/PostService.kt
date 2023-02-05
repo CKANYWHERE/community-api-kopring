@@ -5,6 +5,7 @@ import ckanywhere.communityapi.api.post.dto.UpdatePostDto
 import ckanywhere.communityapi.api.post.entity.PostEntity
 import ckanywhere.communityapi.api.post.repository.PostRepo
 import ckanywhere.communityapi.api.post.response.PostResponse
+import ckanywhere.communityapi.api.post.response.PostResponseWithComment
 import ckanywhere.communityapi.config.ModelMapperConfig
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
@@ -12,12 +13,11 @@ import org.springframework.transaction.annotation.Transactional
 @Service
 class PostService(
     val postRepo: PostRepo,
-    val modelMapper: ModelMapperConfig
     ) {
 
-    fun getPosts(): List<PostResponse> {
+    fun getPosts(): List<PostResponseWithComment> {
         return this.postRepo.getPosts()
-            .map { post: PostEntity -> post.toResponseDto() }
+            .map { post: PostEntity -> post.toResponseWithComment() }
     }
 
     fun createPost(dto: CreatePostDto): PostResponse {
