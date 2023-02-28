@@ -1,6 +1,6 @@
-package ckanywhere.communityapi.api.user.entity
+package ckanywhere.communityapi.api.auth.entity
 
-import ckanywhere.communityapi.api.user.response.UserCreatedResponse
+import ckanywhere.communityapi.api.auth.response.UserCreatedResponse
 import javax.persistence.*
 
 @Entity

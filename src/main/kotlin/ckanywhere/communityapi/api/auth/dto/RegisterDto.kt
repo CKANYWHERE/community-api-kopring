@@ -1,7 +1,6 @@
-package ckanywhere.communityapi.api.user.dto
+package ckanywhere.communityapi.api.auth.dto
 
-import ckanywhere.communityapi.api.post.entity.PostEntity
-import ckanywhere.communityapi.api.user.entity.UserEntity
+import ckanywhere.communityapi.api.auth.entity.UserEntity
 
 data class RegisterDto(
     val email: String,

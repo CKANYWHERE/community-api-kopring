@@ -1,12 +1,10 @@
-package ckanywhere.communityapi.api.user
+package ckanywhere.communityapi.api.auth
 
-import ckanywhere.communityapi.api.user.dto.RegisterDto
-import ckanywhere.communityapi.api.user.entity.UserEntity
-import ckanywhere.communityapi.api.user.repository.UserRepo
-import ckanywhere.communityapi.api.user.response.UserCreatedResponse
+import ckanywhere.communityapi.api.auth.dto.RegisterDto
+import ckanywhere.communityapi.api.auth.repository.UserRepo
+import ckanywhere.communityapi.api.auth.response.UserCreatedResponse
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder
 import org.springframework.stereotype.Service
-import org.springframework.web.bind.annotation.RequestBody
 
 @Service
 class UserService(val userRepo: UserRepo) {

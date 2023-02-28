@@ -14,10 +14,11 @@ class SecurityConfig{
     @Bean
     fun filterChain(http: HttpSecurity): SecurityFilterChain {
         return http.authorizeRequests()
-            .antMatchers("/api/user")
+            .antMatchers("/api/auth/register")
             .permitAll()
             .and()
             .csrf().disable()
+            .formLogin().disable()
             .build()
     }
 }
